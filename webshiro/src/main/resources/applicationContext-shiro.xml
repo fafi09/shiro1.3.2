@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe" />
+		<property name="httpOnly" value="true" />
+		<property name="maxAge" value="172800" /><!-- 30天 -->
+	</bean>
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cipherKey"
+			value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}" />
+		<property name="cookie" ref="rememberMeCookie" />
+	</bean>
+    <!-- 凭证匹配器 -->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    	<property name="hashAlgorithmName" value="md5"></property>
+    	<property name="hashIterations" value="2"></property>
+    </bean>
+    <!-- 自定义realm -->
+    <bean id="myrealm" class="com.bjsxt.manage.realm.ManageRealm">
+    	<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+    </bean>
+    <!-- 配置SecurityManger实例 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    	<property name="realms" ref="myrealm"></property>
+    	<!-- <property name="rememberMeManager" ref="rememberMeManager"></property> -->
+    </bean>
+    <bean id="myLoginFilter" class="com.bjsxt.manage.filter.MyLoginFilter"></bean>
+    <!-- 配置shiro如何处理url -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 哪个控制器是认证的控制器-->
+		<property name="loginUrl" value="/login"></property>
+		<!-- 认证成功后跳转到哪个控制器 -->
+		<property name="successUrl" value="/success"></property>
+		<property name="filters">
+			<map>
+				<entry key="myauthc" value-ref="myLoginFilter"></entry>
+			</map>
+		</property>
+		<!-- 详细配置过程 -->
+		<!-- 配置url被哪些内置filter进行处理 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/login=myauthc
+			</value>
+		</property>
+    </bean>
+</beans>
