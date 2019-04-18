@@ -56,7 +56,7 @@ $(function(){
 				<input style="width:400px;margin:10px;height:40px;font-size:26px;" class="easyui-validatebox" type="text" name="username" data-options="required:true,missingMessage:'用户名不能为空'" />  <br/>
 				<input style="width:400px;margin:10px;height:40px;font-size:26px;" class="easyui-validatebox" type="password" name="password" data-options="required:true,missingMessage:'密码不能为空'" />  <br/>
 				<input style="width:200px;margin:10px;height:40px;font-size:26px;" class="easyui-validatebox" type="text" name="validCode" data-options="required:true,missingMessage:'请输入验证码'"/><img src="validCode" width="180" height="40" id="login_validate_code"/><a href="" id="login_change">看不清</a><br/>
-				<input type="checkbox" name="rememberMe" value="true"/><br/>
+				<input type="checkbox" name="rememberMe" value="true"/>2天免登录<br/>
 				<a style="width:380px;height:20px;padding:10px;" id="login_submit" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">登录</a>  
 			</form>
 		</div> 
