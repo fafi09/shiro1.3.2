@@ -57,7 +57,8 @@ $(function(){
 <body class="easyui-layout">   
     <div data-options="region:'north',title:'网站',split:false,collapsible:false" style="height:100px;">
     	<div>
-    		<img style="border-radius:25px;" src="${user.photo }" id="main_photo" width="50" height="50"/> 
+    		<%-- <img style="border-radius:25px;" src="${user.photo }" id="main_photo" width="50" height="50"/>  --%>
+    		<img style="border-radius:25px;" src="images/header.jpg" id="main_photo" width="50" height="50"/> 
     		<span style="font-size:25px;font-weight:bold;">后台管理系统 </span>
     		<a id="main_logout" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">退出登录</a>  
     	</div>

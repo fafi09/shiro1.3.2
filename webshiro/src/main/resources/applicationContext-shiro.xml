@@ -37,6 +37,7 @@
     	<!-- <property name="rememberMeManager" ref="rememberMeManager"></property> -->
     </bean>
     <bean id="myLoginFilter" class="com.bjsxt.manage.filter.MyLoginFilter"></bean>
+    <bean id="myUserFilter" class="com.bjsxt.manage.filter.MyUserFilter"></bean>
     <!-- 配置shiro如何处理url -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
@@ -47,6 +48,7 @@
 		<property name="filters">
 			<map>
 				<entry key="myauthc" value-ref="myLoginFilter"></entry>
+				<entry key="myuser" value-ref="myUserFilter"></entry>
 			</map>
 		</property>
 		<!-- 详细配置过程 -->
@@ -54,6 +56,16 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/login=myauthc
+				/js/**=anon
+				/css/**=anon
+				/images/**=anon
+				/=anon
+				/validCode=anon
+				/success=anon
+				/validateError=anon 
+				/favicon.ico=anon
+				/**=myuser
+				<!-- /main=myuser -->
 			</value>
 		</property>
     </bean>
