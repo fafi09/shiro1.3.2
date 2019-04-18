@@ -90,4 +90,14 @@ public class UserController {
 		mr.setMsg("验证码错误");
 		return mr;
 	}
+	
+	/**
+	 * 退出
+	 * @return
+	 */
+	@RequestMapping("logout")
+	public String logout(){
+		SecurityUtils.getSubject().logout();
+		return "redirect:/";
+	}
 }

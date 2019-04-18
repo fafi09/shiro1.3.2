@@ -12,6 +12,10 @@
 <script type="text/javascript" src="js/rotate.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#main_logout").click(function(){
+		location.href="logout";
+	});
+	
 	$("#main_photo").mouseover(function(){
 		rotation();
 	}).mouseout(function(){
@@ -47,6 +51,7 @@ $(function(){
 	});
 	
 })
+
 </script>
 </head>
 <body class="easyui-layout">   
@@ -54,7 +59,7 @@ $(function(){
     	<div>
     		<img style="border-radius:25px;" src="${user.photo }" id="main_photo" width="50" height="50"/> 
     		<span style="font-size:25px;font-weight:bold;">后台管理系统 </span>
-    		<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">退出登录</a>  
+    		<a id="main_logout" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">退出登录</a>  
     	</div>
     </div>   
     <div data-options="region:'west',title:'菜单',collapsible:false" style="width:200px;">
