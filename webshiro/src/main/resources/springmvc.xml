@@ -15,12 +15,12 @@
     <!-- 注册核心组件HandlerAdapter和HandlerMapping -->
     <mvc:annotation-driven></mvc:annotation-driven>
     <!-- 静态资源 -->
-    <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
-    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
-    <mvc:resources location="/WEB-INF/images/" mapping="/images/**"></mvc:resources>
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+    <mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
     <!-- 自定义视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    	<property name="prefix" value="/WEB-INF/jsp/"></property>
+    	<property name="prefix" value="/jsp/"></property>
     	<property name="suffix" value=".jsp"></property>
     </bean>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>

@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/js/easyui/themes/default/easyui.css">   
-<link rel="stylesheet" type="text/css" href="/js/easyui/themes/icon.css">   
-<script type="text/javascript" src="/js/jquery-1.7.2.js"></script>   
-<script type="text/javascript" src="/js/easyui/jquery.easyui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">   
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">   
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>   
+<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	//提交按钮

@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台管理系统-主页面</title>
-<link rel="stylesheet" type="text/css" href="/js/easyui/themes/default/easyui.css">   
-<link rel="stylesheet" type="text/css" href="/js/easyui/themes/icon.css">   
-<script type="text/javascript" src="/js/jquery-1.7.2.js"></script>   
-<script type="text/javascript" src="/js/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="/js/rotate.js"></script>
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">   
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">   
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>   
+<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/rotate.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#main_photo").mouseover(function(){
@@ -63,13 +63,13 @@ $(function(){
     <div data-options="region:'center',title:'内容',collapsible:false" style="padding:5px;background:#eee;">
     	<div id="main_tabs" class="easyui-tabs" style="width:500px;height:250px;" data-options="fit:true">   
 		    <div title="首页" style="padding:20px;">   
-		        欢迎使用北京尚学堂后台管理系统  
+		        欢迎使用后台管理系统  
 		    </div>   
 		</div>
     </div>   
     <div data-options="region:'south',title:'底部信息',collapsible:false" style="height:100px;">
     	<div style="text-align:center;color:gray;height:70px;line-height:70px;">
-    		Copyright &copy; 北京尚学堂-202 2018-
+    		Copyright &copy; xxxxx-202 2018-
     	</div>
     </div>   
 </body> 
