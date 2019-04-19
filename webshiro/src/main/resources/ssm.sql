@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2019-04-18 07:43:26
+-- Generation Time: 2019-04-19 06:50:07
 -- 服务器版本： 5.7.17-log
 -- PHP Version: 5.6.30
 
@@ -36,6 +36,14 @@ CREATE TABLE `comment` (
   `createtime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 转存表中的数据 `comment`
+--
+
+INSERT INTO `comment` (`id`, `name`, `phone`, `email`, `other`, `content`, `createtime`) VALUES
+(1, 'zs', '1234567', 'asdfas@123.com', 'ddd', 'fff', '2019-04-04'),
+(2, 'ls', '1234567', 'asdfas@123.com', 'ddd', 'fff', '2019-04-04');
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +63,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `state`, `filename`, `pid`) VALUES
-(1, 'add', '', '', 0),
+(1, '人员信息维护', '', 'jsp/base/lygl.jsp', 0),
 (2, 'update', '', '', 1);
 
 -- --------------------------------------------------------
