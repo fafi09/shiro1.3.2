@@ -5,11 +5,13 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.bjsxt.dubbo.service.PermissionDubboService;
 import com.bjsxt.dubbo.service.UserDubboService;
 import com.bjsxt.pojo.User;
 
@@ -21,9 +23,15 @@ import com.bjsxt.pojo.User;
 public class ManageRealm extends AuthorizingRealm{
 	@Autowired
 	private UserDubboService userDubboService;
+	@Autowired
+	private PermissionDubboService permissionDubboService;
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		return null;
+		Object o = principals.getPrimaryPrincipal();
+		//List<Long> permitIds = permissionDubboService.selPermissionByUid(uid);
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		info.addStringPermission("DEL");
+		return info;
 	}
 	//认证
 	@Override
