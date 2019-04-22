@@ -69,4 +69,5 @@
 			</value>
 		</property>
     </bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 </beans>

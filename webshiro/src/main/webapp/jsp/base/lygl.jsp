@@ -53,9 +53,24 @@
 				pageList : [ 1, 2, 3, 4 ],
 				pageSize : 2
 			});
+			
+			$("#search_btn").click(function(){
+				$('#operation_form').form('submit', {    
+				    url:'search',     
+				    success:function(data){   
+				    	var dataJson = eval("("+data+")");
+				        if(dataJson.status==200){
+				        	location.href="main";
+				        }else{
+				        	$.messager.alert('系统消息',dataJson.msg); 
+				        }
+				    }    
+				});
+			});
 		})
 	</script>
 	<table id="lygl_datagrid"></table>
+	<form id="operation_form" method="post" style="width:480px; height:220px;text-align:center ">
 	<div
 		style="padding: 5px; background: #fafafa;  border: 1px solid #ccc; text-align: center">
 		<a id="search_btn" href="#" class="easyui-linkbutton"
@@ -73,5 +88,6 @@
 				class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
 		</shiro:hasPermission>
 	</div>
+	</form>
 </body>
 </html>
