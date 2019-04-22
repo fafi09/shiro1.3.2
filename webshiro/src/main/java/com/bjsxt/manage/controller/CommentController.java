@@ -56,4 +56,18 @@ public class CommentController {
 		
 		return mr;
 	}
+	
+	@RequestMapping("del")
+	@ResponseBody
+	public ManageResult delCommnet(HttpServletRequest req) {
+		Subject subject = SecurityUtils.getSubject();
+		ManageResult mr = new ManageResult();
+		if(subject.isPermitted("SRC")) {
+			mr.setMsg("有删除权限");
+		} else {
+			mr.setMsg("无删除权限");
+		}
+		
+		return mr;
+	}
 }

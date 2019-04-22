@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="shiro"  uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:shiro="http://shiro.apache.org/tags"> <!-- xmlns:shiro="http://shiro.apache.org/tags" 不起作用-->
+<html xmlns:shiro="http://shiro.apache.org/tags">
+<!-- xmlns:shiro="http://shiro.apache.org/tags" 不起作用-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -53,41 +54,58 @@
 				pageList : [ 1, 2, 3, 4 ],
 				pageSize : 2
 			});
+
+			$("#search_btn").click(function() {
+				$('#operation_form').form('submit', {
+					url : 'search',
+					success : function(data) {
+						var dataJson = eval("(" + data + ")");
+						if (dataJson.status == 200) {
+							location.href = "main";
+						} else {
+							$.messager.alert('系统消息', dataJson.msg);
+						}
+					}
+				});
+			});
 			
-			$("#search_btn").click(function(){
-				$('#operation_form').form('submit', {    
-				    url:'search',     
-				    success:function(data){   
-				    	var dataJson = eval("("+data+")");
-				        if(dataJson.status==200){
-				        	location.href="main";
-				        }else{
-				        	$.messager.alert('系统消息',dataJson.msg); 
-				        }
-				    }    
+			$("#del_btn").click(function() {
+				$('#operation_form').form('submit', {
+					url : 'del',
+					success : function(data) {
+						var dataJson = eval("(" + data + ")");
+						if (dataJson.status == 200) {
+							location.href = "main";
+						} else {
+							$.messager.alert('系统消息', dataJson.msg);
+						}
+					}
 				});
 			});
 		})
 	</script>
 	<table id="lygl_datagrid"></table>
-	<form id="operation_form" method="post" style="width:480px; height:220px;text-align:center ">
 	<div
-		style="padding: 5px; background: #fafafa;  border: 1px solid #ccc; text-align: center">
-		<a id="search_btn" href="#" class="easyui-linkbutton"
-			data-options="iconCls:'icon-search'">浏览</a> 
-		<shiro:hasPermission name="ADD">
-		<a id="create_btn"
-			href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">新建</a>
-		</shiro:hasPermission>
-		<shiro:hasPermission name="UPD">
-		<a id="upd_btn" href="#" class="easyui-linkbutton"
-			data-options="iconCls:'icon-edit'">更新</a>
-		</shiro:hasPermission> 
-		<shiro:hasPermission name="DEL">
-			<a id="del_btn" href="#"
-				class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
-		</shiro:hasPermission>
+		style="padding: 5px; background: #fafafa; border: 1px solid #ccc; text-align: center">
+
+		<form id="operation_form" method="post"
+			style="text-align: center">
+			<a id="search_btn" href="#" class="easyui-linkbutton"
+				data-options="iconCls:'icon-search'">浏览</a>
+			<shiro:hasPermission name="ADD">
+				<a id="create_btn" href="#" class="easyui-linkbutton"
+					data-options="iconCls:'icon-add'">新建</a>
+			</shiro:hasPermission>
+			<shiro:hasPermission name="UPD">
+				<a id="upd_btn" href="#" class="easyui-linkbutton"
+					data-options="iconCls:'icon-edit'">更新</a>
+			</shiro:hasPermission>
+			<shiro:hasPermission name="DEL">
+				<a id="del_btn" href="#" class="easyui-linkbutton"
+					data-options="iconCls:'icon-remove'">删除</a>
+			</shiro:hasPermission>
+
+		</form>
 	</div>
-	</form>
 </body>
 </html>

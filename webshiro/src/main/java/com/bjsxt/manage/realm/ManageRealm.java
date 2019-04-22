@@ -1,5 +1,6 @@
 package com.bjsxt.manage.realm;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -46,5 +47,9 @@ public class ManageRealm extends AuthorizingRealm{
 		}
 		return null;
 	}
-
+	
+	@Override
+	protected void doClearCache(PrincipalCollection principals) {
+		this.getCacheManager().getCache("authenticationCache").clear();
+	}
 }
